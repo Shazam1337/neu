@@ -2,9 +2,9 @@ import { Raid } from "@/lib/mock";
 
 export default function RecentRaids({ items }: { items: Raid[] }) {
   const getStatusText = (status: string) => {
-    if (status === "pending") return "In Transfer";
-    if (status === "verified") return "Processing";
-    return "Signal Delivered";
+    if (status === "pending") return "Thought in transfer";
+    if (status === "verified") return "Processing cognitive pulse";
+    return "Signal delivered successfully";
   };
 
   const getStatusClass = (status: string) => {
@@ -16,10 +16,10 @@ export default function RecentRaids({ items }: { items: Raid[] }) {
   return (
     <div className="card p-5 min-h-[320px]">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="section-title font-heading">Signal Stream</h3>
+        <h3 className="section-title font-heading">Neural Stream</h3>
         <span className="badge-dot">
           <span className="size-2 rounded-full bg-neon-cyan animate-pulse" style={{ boxShadow: '0 0 8px rgba(0, 229, 255, 0.8)' }}></span>
-          Real-time
+          real-time transmissions
         </span>
       </div>
       {items.length === 0 ? (

@@ -9,15 +9,15 @@ export default function InfoStrip() {
     <div className="container-grid grid md:grid-cols-3 gap-4 mt-8 mb-8">
       <Item 
         title="Neural Signal Scan" 
-        desc="AI-powered signal detection every 3 seconds. Real-time network monitoring via Protocol 402." 
+        desc="AI-driven verification every 3 seconds. Cognitive synchronization via Protocol 402." 
       />
       <Item 
-        title="Auto-Streamed Energy" 
-        desc="Signals flow directly to your neural address through Synapse402 — no claims, no waiting. Instant transmission." 
+        title="Auto-Energy Stream" 
+        desc="Thoughts flow directly to your neural wallet — instant value transmission without claiming." 
       />
       <Item 
-        title="On-Chain Transparency" 
-        desc="Every signal verified, every transmission traceable. Complete network visibility on Layer 402." 
+        title="On-Chain Cognition" 
+        desc="Every signal verified, every connection visible. Full neural transparency on Layer 402." 
       />
     </div>
   );

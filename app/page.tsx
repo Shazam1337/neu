@@ -1,4 +1,6 @@
 "use client";
+import { useState, useEffect } from "react";
+import Welcome from "@/components/Welcome";
 import Heading from "@/components/Heading";
 import SubmitRaid from "@/components/SubmitRaid";
 import RecentRaids from "@/components/RecentRaids";
@@ -7,11 +9,30 @@ import FeeClaims from "@/components/FeeClaims";
 import Payments from "@/components/Payments";
 import InfoStrip from "@/components/InfoStrip";
 import Pending from "@/components/Pending";
+import Footer from "@/components/Footer";
 import { useMockActivity } from "@/hooks/useMockActivity";
 import { generateRaid } from "@/lib/mock";
 
 export default function Page() {
+  const [showWelcome, setShowWelcome] = useState(true);
   const { raids, top, payments, fees, pending } = useMockActivity();
+
+  useEffect(() => {
+    // Check if user has seen welcome screen
+    const hasSeenWelcome = localStorage.getItem('neura402_welcome_seen');
+    if (hasSeenWelcome === 'true') {
+      setShowWelcome(false);
+    }
+  }, []);
+
+  const handleEnter = () => {
+    localStorage.setItem('neura402_welcome_seen', 'true');
+    setShowWelcome(false);
+  };
+
+  if (showWelcome) {
+    return <Welcome onEnter={handleEnter} />;
+  }
 
   return (
     <main className="pb-8">
@@ -43,6 +64,7 @@ export default function Page() {
       </div>
 
       <InfoStrip />
+      <Footer />
     </main>
   );
 }

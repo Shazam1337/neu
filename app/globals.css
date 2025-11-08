@@ -226,6 +226,21 @@ body {
     0% { opacity: 1; transform: scale(1); }
     100% { opacity: 0; transform: scale(1.5); }
   }
+
+  @keyframes welcome-glow-pulse {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+  }
+
+  .welcome-glow {
+    animation: welcome-glow-pulse 3s ease-in-out infinite;
+  }
 }
 
 /* Custom scrollbar styling - Cyberpunk theme */

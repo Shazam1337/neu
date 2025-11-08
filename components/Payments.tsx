@@ -9,7 +9,7 @@ export default function Payments({ items }: { items: Payment[] }) {
         <div className="text-center">
           <div className="text-3xl mb-2">⚡</div>
           <div className="text-sm font-heading">No signals delivered</div>
-          <div className="text-xs muted mt-1">Waiting for transmission... • Synapse402</div>
+          <div className="text-xs muted mt-1">Waiting for transmission... • NEURA402</div>
         </div>
         </div>
       ) : (

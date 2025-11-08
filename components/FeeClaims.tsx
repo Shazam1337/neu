@@ -1,7 +1,7 @@
 export default function FeeClaims({ totalSol }: { totalSol: number }) {
   return (
     <div className="card p-5 relative overflow-hidden">
-      <h3 className="section-title font-heading mb-4">Synapse Vault</h3>
+      <h3 className="section-title font-heading mb-4">NEURA Vault</h3>
       
       {/* Pulsing Energy Core */}
       <div className="flex items-center justify-center mb-5">
@@ -27,14 +27,17 @@ export default function FeeClaims({ totalSol }: { totalSol: number }) {
         <div className="text-3xl font-heading font-bold text-neon-cyan neon-glow-strong">
           {totalSol.toFixed(6)} SOL
         </div>
-        <div className="text-xs text-neon-cyan/60 uppercase tracking-wider">Energy Core • Vault 402</div>
+        <div className="text-xs text-neon-cyan/60 uppercase tracking-wider">Energy Core: Vault 402</div>
       </div>
 
       <div className="mt-5 pt-4 border-t border-neon-cyan/20 text-center">
         <div className="text-xs text-neon-cyan/70 font-mono">
-          Signals Delivered: <span className="text-neon-cyan font-semibold">{Math.floor(totalSol * 2000).toLocaleString()}</span>
+          Current Output: <span className="text-neon-cyan font-semibold">{totalSol.toFixed(6)} SOL</span>
         </div>
-        <div className="text-xs text-neon-cyan/50 mt-2">Protocol 402 Active</div>
+        <div className="text-xs text-neon-cyan/70 font-mono mt-1">
+          Verified Thoughts: <span className="text-neon-cyan font-semibold">{Math.floor(totalSol * 2000).toLocaleString()}</span>
+        </div>
+        <div className="text-xs text-neon-cyan/50 mt-3 italic">The vault accumulates neural energy — every verified signal adds to the collective pulse.</div>
       </div>
 
       {totalSol === 0 && (

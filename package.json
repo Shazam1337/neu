@@ -1,7 +1,7 @@
 {
-  "name": "SYNAPSE402",
+  "name": "NEURA402",
   "version": "1.0.0",
-  "description": "The Neural Network of the Community",
+  "description": "The Cognitive Network of Attention",
   "main": "next.config.js",
   "directories": {
     "lib": "lib"

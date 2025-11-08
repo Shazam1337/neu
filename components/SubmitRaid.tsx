@@ -11,7 +11,7 @@ export default function SubmitRaid({ onMockSubmit }: Props) {
   return (
     <div className="card p-5 card-holographic">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="section-title font-heading">Transmit Signal</h3>
+        <h3 className="section-title font-heading">Transmit Thought</h3>
         <span className="text-[10px] px-2 py-1 rounded-full bg-neon-cyan/20 border border-neon-cyan/40 text-neon-cyan font-medium">
           Active
         </span>
@@ -42,21 +42,21 @@ export default function SubmitRaid({ onMockSubmit }: Props) {
           }}
           className="w-full btn-neon py-3 font-heading tracking-wider"
         >
-          Transmit Signal →
+          Transmit Thought →
         </button>
       </div>
       <div className="mt-5 pt-4 border-t border-neon-cyan/20 text-xs text-neon-cyan/60 space-y-1.5">
         <p className="flex items-start gap-2">
           <span className="text-neon-cyan">•</span>
-          <span>Tag $SYN402 or CA in your signal</span>
+          <span>Tag $NEURA402 or CA in your transmission</span>
         </p>
         <p className="flex items-start gap-2">
           <span className="text-neon-cyan">•</span>
-          <span>Automated verification every 3 seconds via Protocol 402</span>
+          <span>Verification runs every 3 seconds via Protocol 402</span>
         </p>
         <p className="flex items-start gap-2">
           <span className="text-neon-cyan">•</span>
-          <span>Signals flow straight from the Synapse402 vault</span>
+          <span>Signals flow directly through the NEURA Vault</span>
         </p>
       </div>
     </div>
