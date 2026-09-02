@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description: "The Cognitive Network of the Community. Each participant is a neuron — transmitting focus through the NEURA Protocol 402.",
   icons: {
     icon: [
-      { url: "/logo.png", type: "image/png" },
+      { url: "/logo-v2.png", type: "image/png" },
     ],
-    apple: "/logo.png",
+    apple: "/logo-v2.png",
   },
 };
 

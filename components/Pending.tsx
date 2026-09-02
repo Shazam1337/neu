@@ -34,7 +34,7 @@ export default function Pending({ items }: Props) {
                     <span className="w-2 h-2 rounded-full bg-neon-purple animate-pulse"></span>
                     {r.user}
                   </span>
-                  <span className="font-mono text-neon-purple font-semibold">{r.sol} SOL</span>
+                  <span className="font-mono text-neon-purple font-semibold">{r.sol} ETH</span>
                 </div>
                 <div className="relative h-2 w-full bg-dark-secondary rounded-full overflow-hidden">
                   <div 
@@ -51,5 +51,4 @@ export default function Pending({ items }: Props) {
     </div>
   );
 }
-
 

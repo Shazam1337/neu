@@ -119,7 +119,7 @@ export default function Welcome({ onEnter }: { onEnter: () => void }) {
               Welcome to NEURA402.
             </h2>
             <p className="text-base sm:text-lg text-neon-cyan/80 leading-relaxed max-w-lg mx-auto">
-              The decentralized cognitive network built on Solana.<br />
+              The decentralized cognitive network powered by Robinhood.<br />
               Each thought, each mention — a signal of intent.
             </p>
           </div>

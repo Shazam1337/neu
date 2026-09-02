@@ -62,7 +62,7 @@ export default function TopRaiders({ top }: { top: { user: string; total: number
                   <span className="font-mono font-semibold text-neon-cyan neon-glow">
                     {t.total.toFixed(3)}
                   </span>
-                  <div className="text-xs text-neon-cyan/50">SOL</div>
+                  <div className="text-xs text-neon-cyan/50">ETH</div>
                 </div>
               </li>
             ))}

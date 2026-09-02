@@ -28,7 +28,7 @@ export default function Payments({ items }: { items: Payment[] }) {
                   {new Date(p.ts).toLocaleTimeString()}
                 </div>
                 <div className="font-mono text-neon-cyan font-semibold neon-glow">
-                  {p.amount} SOL
+                  {p.amount} ETH
                 </div>
               </div>
             </li>

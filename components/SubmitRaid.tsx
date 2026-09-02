@@ -20,7 +20,7 @@ export default function SubmitRaid({ onMockSubmit }: Props) {
         <div>
           <label className="text-xs text-neon-cyan/70 mb-1 block uppercase tracking-wider">Signal Source</label>
           <input 
-            className="input-neon" 
+            className="input-neon"
             placeholder="https://x.com/..."
             value={url} 
             onChange={e => setUrl(e.target.value)} 
@@ -29,8 +29,8 @@ export default function SubmitRaid({ onMockSubmit }: Props) {
         <div>
           <label className="text-xs text-neon-cyan/70 mb-1 block uppercase tracking-wider">Neural Address</label>
           <input 
-            className="input-neon font-mono text-sm" 
-            placeholder="Wallet Address..."
+            className="input-neon"
+            placeholder="Your Robinhood wallet..."
             value={wallet} 
             onChange={e => setWallet(e.target.value)} 
           />

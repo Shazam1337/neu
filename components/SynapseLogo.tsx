@@ -14,7 +14,7 @@ export default function SynapseLogo({ size = 48, className = "", style }: { size
       }}
     >
       <Image
-        src="/logo.png"
+        src="/logo-v2.png"
         alt="NEURA402 Logo"
         width={size}
         height={size}
@@ -24,4 +24,3 @@ export default function SynapseLogo({ size = 48, className = "", style }: { size
     </div>
   );
 }
-

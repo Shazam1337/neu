@@ -2,44 +2,69 @@
 import { useEffect, useState } from "react";
 import SynapseLogo from "./SynapseLogo";
 
-function shorten(pubkey: string) {
-  return pubkey.slice(0, 4) + "…" + pubkey.slice(-4);
+type EvmProvider = {
+  isMetaMask?: boolean;
+  isRabby?: boolean;
+  providers?: EvmProvider[];
+  request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
+  on?: (event: string, handler: (...args: any[]) => void) => void;
+  off?: (event: string, handler: (...args: any[]) => void) => void;
+};
+
+function getEvmProvider() {
+  const ethereum = (window as Window & { ethereum?: EvmProvider }).ethereum;
+  if (!ethereum) return null;
+
+  const providers = ethereum.providers?.length ? ethereum.providers : [ethereum];
+  return providers.find(provider => provider.isMetaMask && !provider.isRabby)
+    ?? providers.find(provider => provider.isRabby)
+    ?? providers[0];
+}
+
+function shorten(address: string) {
+  return address.slice(0, 6) + "..." + address.slice(-4);
 }
 
 export default function NavBar() {
   const [address, setAddress] = useState<string | null>(null);
 
   useEffect(() => {
-    const provider: any = (window as any).solana;
+    const provider = getEvmProvider();
     if (!provider) return;
-    const handleConnect = (pk: any) => setAddress(String(pk?.publicKey ?? pk));
+    const handleAccountsChanged = (accounts: unknown) => {
+      const nextAddress = Array.isArray(accounts) ? accounts[0] : null;
+      setAddress(typeof nextAddress === "string" ? nextAddress : null);
+    };
     const handleDisconnect = () => setAddress(null);
-    provider?.on?.("connect", handleConnect);
+    provider.request({ method: "eth_accounts" })
+      .then(handleAccountsChanged)
+      .catch(() => setAddress(null));
+    provider.on?.("accountsChanged", handleAccountsChanged);
     provider?.on?.("disconnect", handleDisconnect);
     return () => {
-      provider?.off?.("connect", handleConnect);
+      provider?.off?.("accountsChanged", handleAccountsChanged);
       provider?.off?.("disconnect", handleDisconnect);
     };
   }, []);
 
   async function onConnectClick() {
-    const provider: any = (window as any).solana;
-    if (!provider || !provider.isPhantom) {
-      window.open("https://phantom.app/", "_blank");
+    const provider = getEvmProvider();
+    if (!provider) {
+      window.open("https://metamask.io/download/", "_blank");
       return;
     }
     try {
-      const res = await provider.connect();
-      const pk = String(res?.publicKey ?? provider.publicKey ?? "");
-      if (pk) setAddress(pk);
+      const accounts = await provider.request({ method: "eth_requestAccounts" });
+      const nextAddress = Array.isArray(accounts) ? accounts[0] : null;
+      if (typeof nextAddress === "string" && nextAddress) setAddress(nextAddress);
     } catch (e) {
       // silently ignore user rejection
     }
   }
 
   async function onDisconnectClick() {
-    const provider: any = (window as any).solana;
-    try { await provider?.disconnect?.(); } catch {}
+    // EVM wallets do not expose a universal disconnect method. Clearing the
+    // local account keeps the button state consistent without revoking access.
     setAddress(null);
   }
   
@@ -50,12 +75,12 @@ export default function NavBar() {
           <SynapseLogo size={64} className="animate-pulse" style={{ animationDuration: '3s' }} />
             <div className="leading-tight">
               <div className="font-heading font-bold text-[21px] text-neon-cyan neon-glow">NEURA402</div>
-              <div className="text-[12px] text-neon-cyan/60 uppercase tracking-wider">Cognitive Network • Layer 402</div>
+              <div className="text-[12px] text-neon-cyan/60 uppercase tracking-wider"><span className="text-green-400">Robinhood Chain</span> • Layer 402</div>
             </div>
         </div>
         <div className="text-center hidden md:block">
           <div className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-neon-light neon-glow">
-            NEURA Hub
+            NEURA Hood
           </div>
           <div className="badge-dot justify-center mt-1">
             <span className="size-2 rounded-full bg-neon-cyan animate-pulse" style={{ boxShadow: '0 0 8px rgba(0, 229, 255, 0.8)' }}></span>
@@ -75,11 +100,11 @@ export default function NavBar() {
               onClick={onConnectClick} 
               className="btn-neon text-sm"
             >
-              Connect to the NEURA Network
+              Connect wallet
             </button>
           )}
           <a
-            href={process.env.NEXT_PUBLIC_TWITTER_URL ?? "https://x.com/neura402"}
+            href={process.env.NEXT_PUBLIC_TWITTER_URL ?? "https://x.com/neurahood_xyz"}
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 grid place-items-center hover:bg-neon-cyan/20 transition-colors"

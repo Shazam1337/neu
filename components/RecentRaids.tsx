@@ -53,7 +53,7 @@ export default function RecentRaids({ items }: { items: Raid[] }) {
                 </div>
                 <div className="flex items-center gap-3 ml-4">
                   <span className="text-sm font-mono text-neon-cyan font-semibold neon-glow">
-                    {r.sol} SOL
+                    {r.sol} ETH
                   </span>
                   <span className={`text-xs px-3 py-1 rounded-full border font-medium ${getStatusClass(r.status)}`}>
                     {getStatusText(r.status)}
